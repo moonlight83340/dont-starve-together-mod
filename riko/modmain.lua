@@ -12,7 +12,7 @@ TUNING.RIKO_HEALTH = GetModConfigData("health")
 TUNING.RIKO_HUNGER = GetModConfigData("hunger")
 TUNING.RIKO_SANITY = GetModConfigData("sanity")
 
-TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.NANACHI = { "rikohat", "rikocookpot"}
+TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.RIKO = { "rikohat", "rikocookpot"}
 TUNING.STARTING_ITEM_IMAGE_OVERRIDE["rikohat"] = {
     atlas = "images/inventoryimages/rikohat.xml",
     image = "rikohat.tex",
