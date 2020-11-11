@@ -54,4 +54,65 @@ configuration_options = {
         },
         default = 125,
     },
+	{
+	name = "abyss_weapon_explosion_activation",
+    label = "activation explosion abyss weapon",
+    hover = "",
+    options = 
+        {   
+			{description = "yes", data = 1}, 
+			{description = "no", data = 2},
+        },
+        default = 2,
+    },
+	{
+	name = "abyss_weapon_reg_dammage_explosion",
+    label = "abyss weapon reg dammage on explosion",
+    hover = "",
+    options = 
+        {   
+            {description = "80", data = 80},
+			{description = "100", data = 100},
+        },
+        default = 80,
+    },
+	{
+	name = "abyss_weapon_riko_dammage_explosion",
+    label = "abyss weapon riko dammage on explosion",
+    hover = "",
+    options = 
+        {   
+            {description = "50", data = 50},
+            {description = "60", data = 60},
+        },
+        default = 50,
+    },
+	{
+	name = "abyss_weapon_reg_dammage",
+    label = "abyss weapon reg dammage",
+    hover = "",
+    options = 
+        {   
+			{description = "40", data = 40},
+			{description = "50", data = 50},      
+            {description = "60", data = 60},
+            {description = "80", data = 80},
+			{description = "100", data = 100},
+        },
+        default = 60,
+    },
+	{
+	name = "abyss_weapon_riko_dammage",
+    label = "abyss weapon riko dammage",
+    hover = "",
+    options = 
+        {   
+			{description = "15", data = 15}, 
+			{description = "30", data = 30},
+			{description = "40", data = 40},
+            {description = "50", data = 50},
+            {description = "60", data = 60},
+        },
+        default = 15,
+    },
 }

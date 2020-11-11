@@ -14,6 +14,14 @@ TUNING.REGERMAXTIME = 5
 TUNING.ABYSSUSES = 200
 TUNING.REGER_SLOW_HUNGER = 0.6
 
+--Weapon dammage
+TUNING.ABYSS_WEAPON_REG_DAMMAGE = GetModConfigData("abyss_weapon_reg_dammage")
+TUNING.ABYSS_WEAPON_RIKO_DAMMAGE = GetModConfigData("abyss_weapon_riko_dammage")
+
+TUNING.ABYSS_WEAPON_REG_DAMMAGE_EXPLOSION = GetModConfigData("abyss_weapon_reg_dammage_explosion")
+TUNING.ABYSS_WEAPON_RIKO_DAMMAGE_EXPLOSION  = GetModConfigData("abyss_weapon_riko_dammage_explosion")
+TUNING.ABYSS_WEAPON_EXPLOSION_ACTIVATION  = GetModConfigData("abyss_weapon_explosion_activation")
+
 AddMinimapAtlas("images/map_icons/reger.xml")
 AddModCharacter("reger", "MALE")
 

@@ -153,7 +153,7 @@ TUNING.NANACHI_HEALTH = GetModConfigData("health")
 TUNING.NANACHI_HUNGER = GetModConfigData("hunger")
 TUNING.NANACHI_SANITY = GetModConfigData("sanity")
 
-TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.REGER = { "nanachihat"}
+TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.NANACHI = { "nanachihat"}
 TUNING.STARTING_ITEM_IMAGE_OVERRIDE["nanachihat"] = {
     atlas = "images/inventoryimages/nanachihat.xml",
     image = "nanachihat.tex",
