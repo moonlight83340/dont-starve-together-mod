@@ -2,6 +2,7 @@ local STRINGS = GLOBAL.STRINGS
 local require = GLOBAL.require
 local Action = GLOBAL.Action
 local xz_exp = require("widgets/xz_exp")
+modimport("recipes.lua")
 
 PrefabFiles = {"reger", "regercloak", "regerhat", "abyssweapon", "regerweapon", "reger_projectile"}
 Assets = {Asset("ANIM", "anim/xz_exp.zip"), Asset("ATLAS", "images/status_bgs.xml")}

@@ -4,29 +4,39 @@ local assets = {
     Asset("IMAGE", "images/inventoryimages/abyssweapon.tex"),
     Asset("ATLAS", "images/inventoryimages/abyssweapon.xml")
 }
+
+local function onfinished(inst)
+    inst:Remove()
+end
+
 local function onequip(inst, owner)
     owner.AnimState:OverrideSymbol("swap_object", "swap_abyssweapon", "abyssweapon")
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
 end
+
 local function onunequip(inst, owner)
     owner.AnimState:Hide("ARM_carry")
     owner.AnimState:Show("ARM_normal")
 end
 
 local function onattack(inst, owner, target)
-	if TUNING.ABYSS_WEAPON_EXPLOSION_ACTIVATION ~= 2 then	
-		if target.components.health and not inst.components.fueled:IsEmpty() then
-			if owner:HasTag("reger") then
-				SpawnPrefab("explode_small").Transform:SetPosition(target.Transform:GetWorldPosition())
-				target.components.health:DoDelta(-TUNING.ABYSS_WEAPON_REG_DAMMAGE_EXPLOSION)
-				inst.components.fueled:DoDelta(-10)
-			elseif owner:HasTag("riko") then
-				local explode = SpawnPrefab("explode_small")
-				explode.Transform:SetScale(0.3, 0.3, 0.3)
-				explode.Transform:SetPosition(target.Transform:GetWorldPosition())
-				target.components.health:DoDelta(-TUNING.ABYSS_WEAPON_RIKO_DAMMAGE_EXPLOSION)
-				inst.components.fueled:DoDelta(-1)
+	if TUNING.ABYSS_WEAPON_EXPLOSION_ACTIVATION ~= 2 then
+		if (inst.components.finiteuses:GetUses() % 30) == 0 then
+			if target.components.health and not inst.components.fueled:IsEmpty() then
+				if owner:HasTag("reger") then
+					SpawnPrefab("explode_small").Transform:SetPosition(target.Transform:GetWorldPosition())
+					target.components.health:DoDelta(-TUNING.ABYSS_WEAPON_REG_DAMMAGE_EXPLOSION)
+					inst.components.finiteuses:Use(5)
+					--inst.components.fueled:DoDelta(-10)
+				elseif owner:HasTag("riko") then
+					local explode = SpawnPrefab("explode_small")
+					explode.Transform:SetScale(0.3, 0.3, 0.3)
+					explode.Transform:SetPosition(target.Transform:GetWorldPosition())
+					target.components.health:DoDelta(-TUNING.ABYSS_WEAPON_RIKO_DAMMAGE_EXPLOSION)
+					inst.components.finiteuses:Use(2)
+					--inst.components.fueled:DoDelta(-1)
+				end
 			end
 		end
 	end
@@ -54,10 +64,17 @@ local function simple(name)
     inst:AddComponent("equippable")
     inst.components.equippable:SetOnEquip(onequip)
     inst.components.equippable:SetOnUnequip(onunequip)
-    inst:AddComponent("fueled")
-    inst.components.fueled.fueltype = FUELTYPE.POWER
-    inst.components.fueled:InitializeFuelLevel(TUNING.ABYSSUSES)
-    inst.components.fueled.accepting = true
+	
+	inst:AddComponent("finiteuses")
+    inst.components.finiteuses:SetMaxUses(TUNING.ABYSSUSES)
+    inst.components.finiteuses:SetUses(TUNING.ABYSSUSES)
+	inst.components.finiteuses:SetOnFinished(onfinished)
+	
+	
+    --inst:AddComponent("fueled")
+    --inst.components.fueled.fueltype = FUELTYPE.POWER
+    --inst.components.fueled:InitializeFuelLevel(TUNING.ABYSSUSES)
+    --inst.components.fueled.accepting = true
     MakeHauntableLaunch(inst)
     return inst
 end
